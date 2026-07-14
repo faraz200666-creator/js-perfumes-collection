@@ -174,6 +174,22 @@ top:["Mango","Pineapple","Strawberry"],
 middle:["Tropical Fruits","Peach","Rose"],
 base:["Sweet Musk","Amber"],
 vibe:"A sweet, juicy, and fun tropical fruit cocktail that instantly brings a cheerful, refreshing summer energy."
+},
+
+{
+id:12,
+name:"5 Tester Pack",
+price:1300,
+category:"Tester",
+gender:"Unisex",
+inspired:"Choose Any 5 Fragrances",
+image:"assets/perfumes/5-tester-pack.jpg",
+size:"5 Testers",
+lasting:"Varies",
+top:["Choose Any 5"],
+middle:["Luxury Fragrances"],
+base:["Premium Collection"],
+vibe:"Create your own tester pack by selecting any 5 perfumes from our collection. Perfect for finding your favorite fragrance."
 }
 
 ];
