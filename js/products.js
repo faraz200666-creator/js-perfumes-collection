@@ -193,3 +193,5 @@ vibe:"Create your own tester pack by selecting any 5 perfumes from our collectio
 }
 
 ];
+console.log("Loaded perfumes:", perfumes.length);
+console.log(perfumes);
