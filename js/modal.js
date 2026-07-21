@@ -26,6 +26,12 @@ document.getElementById("modalInspired").textContent =
 document.getElementById("modalPrice").textContent =
 "Rs. " + product.price.toLocaleString();
 
+document.getElementById("modalSize").textContent =
+product.size;
+
+document.getElementById("modalLasting").textContent =
+product.lasting;
+
 document.getElementById("modalTop").textContent =
 product.top.join(", ");
 
