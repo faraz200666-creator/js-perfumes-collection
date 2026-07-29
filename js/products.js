@@ -182,7 +182,7 @@ name:"5 Tester Pack",
 price:1300,
 category:"Tester",
 gender:"Unisex",
-"Choose Any 5 Fragrances",
+inspired:"Choose Any 5 Fragrances",
 image:"assets/perfumes/5-tester-pack.jpg",
 size:"5ml Each",
 lasting:"Varies",
@@ -191,7 +191,6 @@ middle:["Luxury Fragrances"],
 base:["Premium Collection"],
 vibe:"Create your own tester pack by selecting any 5 perfumes from our collection. Perfect for finding your favorite fragrance."
 }
-
 ];
 console.log("Loaded perfumes:", perfumes.length);
 console.log(perfumes);
