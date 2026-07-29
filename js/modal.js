@@ -44,6 +44,7 @@ product.base.join(", ");
 document.getElementById("modalVibe").textContent =
 product.vibe;
 
+
 const testerBox = document.getElementById("testerOptions");
 const testerList = document.getElementById("testerList");
 
