@@ -1,4 +1,5 @@
 const topBtn = document.getElementById("topBtn");
+const progressBar = document.getElementById("progressBar");
 
 window.addEventListener("scroll", () => {
 
@@ -8,6 +9,15 @@ window.addEventListener("scroll", () => {
         topBtn.classList.add("hidden");
     }
 
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    const percent = (scrollTop / scrollHeight) * 100;
+
+    progressBar.style.width = percent + "%";
+
 });
 
 topBtn.addEventListener("click", () => {
@@ -16,22 +26,5 @@ topBtn.addEventListener("click", () => {
         top: 0,
         behavior: "smooth"
     });
-
-});
-
-window.addEventListener("scroll", () => {
-
-    const scrollTop =
-        document.documentElement.scrollTop;
-
-    const scrollHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-    const percent =
-        (scrollTop / scrollHeight) * 100;
-
-    document.getElementById("progressBar").style.width =
-        percent + "%";
 
 });
