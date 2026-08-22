@@ -144,3 +144,33 @@ video {
     font-weight: 600;
     z-index: 9999;
 }
+
+/* Promotion Poster Section */
+
+.promotion-poster{
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(212,175,55,0.5);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.promotion-poster img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 640px){
+
+    #promotion{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .promotion-poster{
+        border-radius: 16px;
+    }
+
+}
