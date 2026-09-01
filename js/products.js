@@ -41,6 +41,7 @@ gender:"Women",
 inspired:"Estée Lauder Beautiful Belle",
 image:"assets/perfumes/dreamy-romance.png",
 gallery:[
+    "assets/perfumes/dreamy-romance.png",
     "assets/perfumes/dreamy-romance-1.png",
     "assets/perfumes/dreamy-romance-2.png",
     "assets/perfumes/dreamy-romance-3.png"
