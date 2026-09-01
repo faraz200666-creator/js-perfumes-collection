@@ -174,3 +174,44 @@ video {
     }
 
 }
+
+/* ================= PRODUCT MODAL GALLERY ================= */
+
+.modal-thumbnail {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #444;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: all 0.3s ease;
+}
+
+.modal-thumbnail:hover {
+    opacity: 1;
+    border-color: #D4AF37;
+    transform: translateY(-2px);
+}
+
+.modal-thumbnail.active {
+    opacity: 1;
+    border: 2px solid #D4AF37;
+    box-shadow: 0 0 12px rgba(212,175,55,0.4);
+}
+
+#modalThumbnails {
+    scrollbar-width: thin;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+
+    .modal-thumbnail {
+        width: 62px;
+        height: 62px;
+    }
+
+}

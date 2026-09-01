@@ -16,8 +16,49 @@ const testerPerfumes = [
 
 function openModal(product){
 
-document.getElementById("modalImage").src = product.image;
+const modalImage = document.getElementById("modalImage");
+const modalThumbnails = document.getElementById("modalThumbnails");
 
+const productGallery =
+    product.gallery && product.gallery.length > 0
+        ? product.gallery
+        : [product.image];
+
+// First image as main image
+modalImage.src = productGallery[0];
+
+// Remove old thumbnails
+modalThumbnails.innerHTML = "";
+
+// Create thumbnails
+productGallery.forEach((image, index) => {
+
+    const thumbnail = document.createElement("img");
+
+    thumbnail.src = image;
+    thumbnail.alt = product.name;
+
+    thumbnail.className =
+        "modal-thumbnail" + (index === 0 ? " active" : "");
+
+    thumbnail.addEventListener("click", () => {
+
+        // Change main image
+        modalImage.src = image;
+
+        // Remove active border from all
+        modalThumbnails
+            .querySelectorAll(".modal-thumbnail")
+            .forEach(item => item.classList.remove("active"));
+
+        // Active selected thumbnail
+        thumbnail.classList.add("active");
+
+    });
+
+    modalThumbnails.appendChild(thumbnail);
+
+});
 document.getElementById("modalName").textContent = product.name;
 
 document.getElementById("modalInspired").textContent =
