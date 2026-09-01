@@ -8,6 +8,13 @@ category:"Fresh",
 gender:"Men",
 inspired:"Montblanc Legend",
 image:"assets/perfumes/midnight-silver.png",
+
+gallery:[
+    "assets/perfumes/midnight-silver.png",
+    "assets/perfumes/midnight-silver-1.png",
+    "assets/perfumes/midnight-silver-2.png",
+    "assets/perfumes/midnight-silver-3.png"
+],
 size:"50ml",
 lasting:"8-10 Hours",
 top:["Lavender","Bergamot","Pineapple","Lemon Verbena"],
@@ -24,6 +31,13 @@ category:"Floral",
 gender:"Unisex",
 inspired:"Sabaya",
 image:"assets/perfumes/empire.png",
+
+gallery:[
+    "assets/perfumes/empire.png",
+    "assets/perfumes/empire-1.png",
+    "assets/perfumes/empire-2.png",
+    "assets/perfumes/empire-3.png"
+    ],
 size:"50ml",
 lasting:"8-10 Hours",
 top:["Citruses","Green Notes"],
@@ -62,6 +76,13 @@ category:"Woody",
 gender:"Men",
 inspired:"Creed Aventus",
 image:"assets/perfumes/victor.png",
+
+gallery:[
+    "assets/perfumes/victor.png",
+    "assets/perfumes/victor-1.png",
+    "assets/perfumes/victor-2.png",
+    "assets/perfumes/victor-3.png"
+],
 size:"50ml",
 lasting:"10-12 Hours",
 top:["Pineapple","Bergamot","Black Currant","Apple"],
@@ -78,6 +99,13 @@ category:"Oud",
 gender:"Unisex",
 inspired:"Oud For Greatness",
 image:"assets/perfumes/royal-oud.png",
+
+gallery:[
+    "assets/perfumes/royal-oud.png",
+    "assets/perfumes/royal-oud-1.png",
+    "assets/perfumes/royal-oud-2.png",
+    "assets/perfumes/royal-oud-3.png"
+],
 size:"50ml",
 lasting:"12 Hours",
 top:["Lemon","Pink Pepper","Bergamot"],
@@ -110,6 +138,13 @@ category:"Woody",
 gender:"Men",
 inspired:"LV Ombre Nomade",
 image:"assets/perfumes/sultan.png",
+
+gallery:[
+    "assets/perfumes/sultan.png",
+    "assets/perfumes/sultan-1.png",
+    "assets/perfumes/sultan-2.png",
+    "assets/perfumes/sultan-3.png"
+],
 size:"50ml",
 lasting:"12 Hours",
 top:["Cardamom","Cinnamon","Bergamot"],
@@ -126,6 +161,12 @@ category:"Floral",
 gender:"Women",
 inspired:"Baccarat Rouge 540",
 image:"assets/perfumes/velvet.png",
+gallery:[
+    "assets/perfumes/velvet.png",
+    "assets/perfumes/velvet-1.png",
+    "assets/perfumes/velvet-2.png",
+    "assets/perfumes/velvet-3.png"
+],
 size:"50ml",
 lasting:"10 Hours",
 top:["Fruity Notes","Pomegranate"],
@@ -158,6 +199,12 @@ category:"Fresh",
 gender:"Men",
 inspired:"Rasasi Hawas",
 image:"assets/perfumes/aura.png",
+gallery:[
+    "assets/perfumes/aura.png",
+    "assets/perfumes/aura-1.png",
+    "assets/perfumes/aura-2.png",
+    "assets/perfumes/aura-3.png"
+],
 size:"50ml",
 lasting:"10 Hours",
 top:["Mint","Green Apple","Lemon"],
