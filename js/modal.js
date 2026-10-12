@@ -1,3 +1,4 @@
+
 const modal = document.getElementById("productModal");
 
 const testerPerfumes = [
@@ -14,178 +15,294 @@ const testerPerfumes = [
     "Royal Oud"
 ];
 
-function openModal(product){
+function openModal(product) {
 
-const modalImage = document.getElementById("modalImage");
-const modalThumbnails = document.getElementById("modalThumbnails");
+    // ================= IMAGE CAROUSEL =================
 
-const productGallery =
-    product.gallery && product.gallery.length > 0
-        ? product.gallery
-        : [product.image];
+    const modalImage = document.getElementById("modalImage");
+    const modalThumbnails = document.getElementById("modalThumbnails");
 
-// First image as main image
-modalImage.src = productGallery[0];
+    const productGallery =
+        product.gallery && product.gallery.length > 0
+            ? product.gallery
+            : [product.image];
 
-// Remove old thumbnails
-modalThumbnails.innerHTML = "";
+    modalImage.src = productGallery[0];
+    modalThumbnails.innerHTML = "";
 
-// Create thumbnails
-productGallery.forEach((image, index) => {
+    productGallery.forEach((image, index) => {
 
-    const thumbnail = document.createElement("img");
+        const thumbnail = document.createElement("img");
 
-    thumbnail.src = image;
-    thumbnail.alt = product.name;
+        thumbnail.src = image;
+        thumbnail.alt = product.name;
 
-    thumbnail.className =
-        "modal-thumbnail" + (index === 0 ? " active" : "");
+        thumbnail.className =
+            "modal-thumbnail" + (index === 0 ? " active" : "");
 
-    thumbnail.addEventListener("click", () => {
+        thumbnail.addEventListener("click", () => {
 
-        // Change main image
-        modalImage.src = image;
+            modalImage.src = image;
 
-        // Remove active border from all
-        modalThumbnails
-            .querySelectorAll(".modal-thumbnail")
-            .forEach(item => item.classList.remove("active"));
+            modalThumbnails
+                .querySelectorAll(".modal-thumbnail")
+                .forEach(item => item.classList.remove("active"));
 
-        // Active selected thumbnail
-        thumbnail.classList.add("active");
+            thumbnail.classList.add("active");
 
+        });
+
+        modalThumbnails.appendChild(thumbnail);
     });
 
-    modalThumbnails.appendChild(thumbnail);
 
-});
-document.getElementById("modalName").textContent = product.name;
+    // ================= PRODUCT DETAILS =================
 
-document.getElementById("modalInspired").textContent =
-"Inspired by " + product.inspired;
+    document.getElementById("modalName").textContent =
+        product.name;
 
-document.getElementById("modalPrice").textContent =
-"Rs. " + product.price.toLocaleString();
+    document.getElementById("modalInspired").textContent =
+        "Inspired by " + product.inspired;
 
-document.getElementById("modalSize").textContent =
-product.size;
+    document.getElementById("modalPrice").textContent =
+        "Rs. " + product.price.toLocaleString();
 
-document.getElementById("modalLasting").textContent =
-product.lasting;
+    document.getElementById("modalSize").textContent =
+        product.size;
 
-document.getElementById("modalTop").textContent =
-product.top.join(", ");
+    document.getElementById("modalDelivery").textContent =
+        product.name === "5 Tester Pack"
+            ? "Delivery Charges Apply"
+            : "Free in Karachi";
 
-document.getElementById("modalMiddle").textContent =
-product.middle.join(", ");
+    document.getElementById("modalLasting").textContent =
+        product.lasting;
 
-document.getElementById("modalBase").textContent =
-product.base.join(", ");
+    document.getElementById("modalTop").textContent =
+        product.top.join(", ");
 
-document.getElementById("modalVibe").textContent =
-product.vibe;
+    document.getElementById("modalMiddle").textContent =
+        product.middle.join(", ");
+
+    document.getElementById("modalBase").textContent =
+        product.base.join(", ");
+
+    document.getElementById("modalVibe").textContent =
+        product.vibe;
 
 
-const testerBox = document.getElementById("testerOptions");
-const testerList = document.getElementById("testerList");
+    // ================= TESTER PACK =================
 
-testerList.innerHTML = "";
+    const testerBox = document.getElementById("testerOptions");
+    const testerList = document.getElementById("testerList");
+    const testerQuantity = document.getElementById("testerQuantity");
+    const testerDelivery = document.getElementById("testerDelivery");
+    const whatsappBtn = document.getElementById("modalWhatsapp");
 
-if (product.name === "5 Tester Pack") {
+    if (product.name === "5 Tester Pack") {
 
-    testerBox.classList.remove("hidden");
+        testerBox.classList.remove("hidden");
 
-    testerPerfumes.forEach(name => {
+        // Generate separate fragrance selection for each box
+        function renderTesterBoxes() {
 
-        testerList.innerHTML += `
-        <label class="flex items-center gap-2 bg-black p-2 rounded-lg cursor-pointer">
-            <input type="checkbox" value="${name}" class="testerCheck">
-            <span>${name}</span>
-        </label>
-        `;
+            const quantity = Number(testerQuantity.value);
 
-    });
+            testerList.innerHTML = "";
 
-} else {
+            for (let boxNumber = 1; boxNumber <= quantity; boxNumber++) {
 
-    testerBox.classList.add("hidden");
+                const boxContainer = document.createElement("div");
 
-}
+                boxContainer.className =
+                    "bg-[#111] border border-yellow-700 rounded-xl p-4 mb-5";
 
-const whatsappBtn = document.getElementById("modalWhatsapp");
+                boxContainer.innerHTML = `
+                    <h4 class="text-yellow-400 font-bold mb-3">
+                        Box ${boxNumber} — Choose 5 Fragrances
+                    </h4>
 
-if (product.name === "5 Tester Pack") {
+                    <p class="text-sm text-gray-400 mb-3"
+                       id="boxCount${boxNumber}">
+                        Selected: 0 / 5
+                    </p>
 
-    whatsappBtn.href = "#";
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        ${testerPerfumes.map(name => `
+                            <label class="flex items-center gap-2 bg-black p-2 rounded-lg cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    value="${name}"
+                                    class="testerCheck"
+                                    data-box="${boxNumber}"
+                                >
+                                <span>${name}</span>
+                            </label>
+                        `).join("")}
+                    </div>
+                `;
 
-    whatsappBtn.onclick = function (e) {
+                testerList.appendChild(boxContainer);
+            }
 
-        e.preventDefault();
+            // Maximum 5 fragrances per box
+            testerList.querySelectorAll(".testerCheck").forEach(box => {
 
-        const selected = [...document.querySelectorAll(".testerCheck:checked")];
+                box.addEventListener("change", () => {
 
-        if (selected.length !== 5) {
-            alert("Please select exactly 5 fragrances.");
-            return;
+                    const boxNumber = box.dataset.box;
+
+                    const checked = testerList.querySelectorAll(
+                        `.testerCheck[data-box="${boxNumber}"]:checked`
+                    );
+
+                    if (checked.length > 5) {
+
+                        box.checked = false;
+
+                        alert(
+                            `You can select only 5 fragrances for Box ${boxNumber}.`
+                        );
+
+                    }
+
+                    const currentCount = testerList.querySelectorAll(
+                        `.testerCheck[data-box="${boxNumber}"]:checked`
+                    ).length;
+
+                    document.getElementById(
+                        `boxCount${boxNumber}`
+                    ).textContent = `Selected: ${currentCount} / 5`;
+
+                });
+            });
+
+            // Update price and delivery
+            const total = product.price * quantity;
+
+            document.getElementById("modalPrice").textContent =
+                "Rs. " + total.toLocaleString();
+
+            testerDelivery.textContent =
+                quantity === 2
+                    ? "FREE Delivery"
+                    : "Delivery Charges Apply";
+
+            // Update main delivery information
+            document.getElementById("modalDelivery").textContent =
+                quantity === 2
+                    ? "FREE Delivery"
+                    : "Delivery Charges Apply";
+
+            testerDelivery.className =
+                quantity === 2
+                    ? "text-sm text-green-400 font-bold mt-3"
+                    : "text-sm text-gray-400 mt-3";
+
         }
 
-        const perfumes = selected.map(x => "• " + x.value).join("%0A");
+        // Initial display: 1 box
+        testerQuantity.value = "1";
+        renderTesterBoxes();
 
-        window.open(
-            `https://wa.me/923112211540?text=Hi, I want to order the 5 Tester Pack (Rs.1300).%0A%0AMy selected fragrances:%0A${perfumes}`,
-            "_blank"
-        );
+        // Change quantity
+        testerQuantity.onchange = renderTesterBoxes;
 
-    };
 
-} else {
+        // ================= TESTER WHATSAPP ORDER =================
 
-    whatsappBtn.onclick = null;
+        whatsappBtn.href = "#";
 
-    whatsappBtn.href =
-        `https://wa.me/923112211540?text=Hi, I want to order ${encodeURIComponent(product.name)}`;
+        whatsappBtn.onclick = function (e) {
+
+            e.preventDefault();
+
+            const quantity = Number(testerQuantity.value);
+
+            let message =
+                `Hi, I want to order ${quantity} Tester Box${quantity > 1 ? "es" : ""}.\n\n`;
+
+            for (let boxNumber = 1; boxNumber <= quantity; boxNumber++) {
+
+                const selected = [
+                    ...testerList.querySelectorAll(
+                        `.testerCheck[data-box="${boxNumber}"]:checked`
+                    )
+                ];
+
+                if (selected.length !== 5) {
+
+                    alert(
+                        `Please select exactly 5 fragrances for Box ${boxNumber}.`
+                    );
+
+                    return;
+                }
+
+                message += `Box ${boxNumber}:\n`;
+
+                selected.forEach(item => {
+                    message += `• ${item.value}\n`;
+                });
+
+                message += "\n";
+            }
+
+            const total = product.price * quantity;
+
+            message += `Total: Rs. ${total.toLocaleString()}\n`;
+
+            message += quantity === 2
+                ? "Delivery: FREE"
+                : "Delivery: Delivery Charges Apply";
+
+            const whatsappURL =
+                "https://wa.me/923112211540?text=" +
+                encodeURIComponent(message);
+
+            window.open(whatsappURL, "_blank");
+        };
+
+    } else {
+
+        // Other perfumes remain unchanged
+        testerBox.classList.add("hidden");
+
+        whatsappBtn.onclick = null;
+
+        whatsappBtn.href =
+            "https://wa.me/923112211540?text=" +
+            encodeURIComponent(
+                "Hi, I want to order " + product.name
+            );
+
+    }
+
+
+    // ================= OPEN MODAL =================
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
 
 }
 
-document.querySelectorAll(".testerCheck").forEach(box => {
 
-    box.addEventListener("change", () => {
-
-        const checked = document.querySelectorAll(".testerCheck:checked");
-
-        if (checked.length > 5) {
-
-            box.checked = false;
-
-            alert("You can select only 5 fragrances.");
-
-        }
-
-    });
-
-});
-
-modal.classList.remove("hidden");
-modal.classList.add("flex");
-
-}
+// ================= CLOSE MODAL =================
 
 document.getElementById("closeModal").onclick = () => {
 
-modal.classList.add("hidden");
-
-modal.classList.remove("flex");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
 
 };
 
-window.onclick = function(e){
+window.onclick = function (e) {
 
-if(e.target===modal){
+    if (e.target === modal) {
 
-modal.classList.add("hidden");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
 
-modal.classList.remove("flex");
+    }
 
-}
-
-}
+};

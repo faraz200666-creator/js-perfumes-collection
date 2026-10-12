@@ -997,10 +997,10 @@ Order on WhatsApp
         <span id="modalSize"></span>
     </div>
 
-    <div class="bg-black p-4 rounded-xl">
-        <strong>Delivery</strong><br>
-        Free in Karachi
-    </div>
+   <div class="bg-black p-4 rounded-xl">
+    <strong>Delivery</strong><br>
+    <span id="modalDelivery">Free in Karachi</span>
+</div>
 
     <div class="bg-black p-4 rounded-xl">
         <strong>Payment</strong><br>
@@ -1014,21 +1014,52 @@ Order on WhatsApp
 
 </div>
 
+
+<!-- ================= TESTER PACK OPTIONS ================= -->
+
 <div id="testerOptions" class="hidden mt-8">
 
-<h3 class="text-yellow-400 text-xl font-bold mb-4">
-Choose Any 5 Perfumes
-</h3>
+    <!-- Quantity Selection -->
+    <div class="mb-5">
 
-<div id="testerList" class="grid grid-cols-2 gap-3">
+        <h3 class="text-yellow-400 text-xl font-bold mb-4">
+            Select Tester Box Quantity
+        </h3>
+
+        <select
+            id="testerQuantity"
+            class="w-full bg-black border border-yellow-600 text-white p-3 rounded-xl"
+        >
+            <option value="1">
+                1 Box - Rs. 1,300 + Delivery Charges
+            </option>
+
+            <option value="2">
+                2 Boxes - Rs. 2,600 + FREE Delivery
+            </option>
+        </select>
+
+        <p id="testerDelivery"
+           class="text-sm text-gray-400 mt-3">
+            Delivery Charges Apply
+        </p>
+
+    </div>
+
+    <!-- Fragrance Selection -->
+    <h3 class="text-yellow-400 text-xl font-bold mb-4">
+        Choose Your Fragrances
+    </h3>
+
+    <div id="testerList" class="space-y-4">
+    </div>
+
+    <p class="text-gray-400 text-sm mt-3">
+        Select exactly 5 fragrances for each box.
+    </p>
 
 </div>
 
-<p class="text-gray-400 text-sm mt-3">
-Select exactly 5 perfumes.
-</p>
-
-</div>
 
         <a id="modalWhatsapp"
             href="#"
